@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>A* Pathfinding</title>
+    <style>
+        html, body{
+            margin: 0;
+            padding: 0;
+        }
+        #canvas{
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            position: absolute;
+        }
+        #toolbar{
+            width: 100%;
+            height: 8vh;
+            bottom: 0;
+            position: absolute;
+            background-color: rgba(0,0,0,0.75);
+            flex-direction: row;
+            justify-content: space-around;
+            align-items:center;
+            display: none;
+        }
+        button{
+            margin: auto;
+        }
+        #title-screen{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            
+        }
+        #menu{
+            margin-top: 10px;
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            width: 100%;
+        }
+        #menu button{
+            margin-top: 2vh;
+            font-size: 5vh;
+            padding: 1vh;
+        }
+
+        #toolbar *{
+            width: 7vh;
+            height: 7vh;
+            position: relative;
+            border-radius: 30%;
+        }
+
+        .tool{
+            border: 0.1vh white solid;  
+        }
+        .obsSelect{
+            background-color: black;
+        }
+        
+        #settings{
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 20px;
+            background-color: white;
+            border: 1px black solid;
+            padding: 10px;
+        }
+
+        .slidecontainer{
+            display: flex;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="title-screen">
+        <div id="menu">
+            <button onclick='play()'>Start</button>
+        </div>
+    </div>
+    <canvas id="canvas">
+        Your browser doesn't support HTML5
+    </canvas> 
+    <div id="toolbar">
+        <div class="tool obsSelect" onclick="toggleObsDraw(1)"></div>
+        <img src="img/erase.png" class="tool erase" onclick="toggleObsDraw(2)" alt="">
+        <img src="img/drag.png" class="tool drag" onclick="toggleObsDraw(3)" alt="">
+        <img src="img/go.png" onclick="pathfind()" alt="">
+    </div>
+    <div id="settings" style="display: none;">
+        <div class="slidecontainer">
+            <p id="hp">Heuristic Coefficient (1.1)</p>
+            <input type="range" min="10" max="30" value="11" class="slider" id="myRange">
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

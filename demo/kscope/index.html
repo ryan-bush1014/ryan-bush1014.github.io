@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kaleid.io</title>
+    <style>
+        html, body{
+            margin: 0;
+            padding: 0;
+        }
+        #canvas{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: -1;
+        }
+
+        #footer{
+            background-color: rgba(0,0,0,0.5);
+            position: fixed;
+            width: 100%;
+            bottom: 0px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items:center;
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Opera and Firefox */    
+        }
+
+        img{
+            margin: 10px;
+        }
+
+        #title-screen{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items:center;
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Opera and Firefox */   
+        }
+
+        #big-title{
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            font-size: 48pt;
+        }
+
+        .ytp-svg-fill {
+            fill: #fff;
+        }
+
+        #unfull{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="title-screen">
+        <span id="big-title">
+            Click anywhere to draw
+        </span>
+    </div>
+    <a id="download" style="display: none;" download></a>
+    <canvas id="canvas" width="" height="">Your browser doesn't support the HTML5 canvas element</canvas>
+    <div id="footer">
+        <input min="1" step="1" onchange="if(this.value !== '') symmetry = Math.round(this.value)*2;" style="margin: 10px; padding: 2px;" type="number" placeholder="Symmetry (Default 8)">
+        <img title="Save (Ctrl + s)" src="save.png" style="height: 60%;" onclick="download()" />
+        <img title="Copy to clipboard"id="copy" src="copy.png" style="height: 60%; display: none;" onclick="copyImage()" />
+        <img title="Clear (R)" src="restart.png" style="height: 60%;" onclick="clearCan()" />
+        <div style="width: auto; height: 100%;" title="Go fullscreen (F)"><svg onclick="openFullscreen(document.documentElement); document.getElementById('unfull').style.display='inline-block'; this.style.display = 'none';" id="full" height="100%" version="1.1" viewBox="0 0 36 36"><g><use></use><path class="ytp-svg-fill" d="m 10,16 2,0 0,-4 4,0 0,-2 L 10,10 l 0,6 0,0 z"></path></g><g><use></use><path class="ytp-svg-fill" d="m 20,10 0,2 4,0 0,4 2,0 L 26,10 l -6,0 0,0 z"></path></g><g><use></use><path class="ytp-svg-fill" d="m 24,24 -4,0 0,2 L 26,26 l 0,-6 -2,0 0,4 0,0 z"></path></g><g><use></use><path class="ytp-svg-fill" d="M 12,20 10,20 10,26 l 6,0 0,-2 -4,0 0,-4 0,0 z"></path></g></svg></div>
+        <div style="width: auto; height: 100%;" title="Exit fullscreen (F)"><svg onclick="closeFullscreen(document.documentElement); document.getElementById('full').style.display='inline-block'; this.style.display = 'none';"id="unfull" height="100%" version="1.1" viewBox="0 0 36 36"><g><use></use><path class="ytp-svg-fill" d="m 14,14 -4,0 0,2 6,0 0,-6 -2,0 0,4 0,0 z"></path></g><g><use></use><path class="ytp-svg-fill" d="m 22,14 0,-4 -2,0 0,6 6,0 0,-2 -4,0 0,0 z"></path></g><g><use></use><path class="ytp-svg-fill" d="m 20,26 2,0 0,-4 4,0 0,-2 -6,0 0,6 0,0 z"></path></g><g><use></use><path class="ytp-svg-fill" d="m 10,22 4,0 0,4 2,0 0,-6 -6,0 0,2 0,0 z"></path></g></svg></div>
+    </div>
+    <script src="util.js"></script>
+    <script src="events.js"></script>
+    <script src="script.js"></script>
+</body>
+<a download></a>
+</html>

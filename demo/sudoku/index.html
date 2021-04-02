@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Sudoku</title>
+    
+    <style type="text/css">
+
+      body{
+        background-color: #0b2647;
+      }
+
+      table{
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      input{
+        margin: 0;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        font-size: 30px;
+      }
+
+      /* td{
+        border: 1px black solid;
+      } */
+
+      .bottom{
+        border-bottom: 4px black solid;
+      }
+      .right{
+        border-right: 4px black solid;
+      }
+      .top{
+        border-top: 4px black solid;
+      }
+      .left{
+        border-left: 4px black solid;
+      }
+
+      #container{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      #buttons{
+        margin-top: 25px;
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+      #buttons button{
+        font-size: 20px;
+      }
+
+      #header{
+        margin-top: 0;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+    </style>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div id="container">
+      <h1 id="header">
+        Sudoku Solver
+      </h1>
+      <table>
+        <tr class="top">
+          <td class="left"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+        </tr>
+        <tr>
+          <td class="left"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+        </tr>
+        <tr class="bottom">
+          <td class="left"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+        </tr>
+        <tr>
+          <td class="left"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+        </tr>
+        <tr>
+          <td class="left"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+        </tr>
+        <tr class="bottom">
+          <td class="left"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+        </tr>
+        <tr>
+          <td class="left"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+        </tr>
+        <tr>
+          <td class="left"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+        </tr>
+        <tr class="bottom">
+          <td class="left"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td><input class="cell" type="text"></td>
+          <td class="right"><input class="cell" type="text"></td>
+        </tr>
+      </table>
+      <div id="buttons">
+        <button id="solve">Solve</button>
+        <button id="clear">Clear</button>
+      </div>
+    </div>
+  </body>
+</html>

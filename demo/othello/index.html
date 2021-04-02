@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <meta charset="utf-8">
+    <title>Othello</title>
+    <style>
+    html{
+      background-image: url('background.jpg');
+      background-attachment: fixed;
+      background-size: cover;
+      background-repeat: no-repeat;
+      
+    }
+
+    html, body{
+      margin: 0;
+    }
+
+    canvas{ 
+      width: 90vh;
+      height: 90vh;
+    }
+    #options{
+      vertical-align: middle;
+      display: flex;
+      justify-content: space-between;
+      width: 90vh;
+      height: 5vh;
+    }
+
+    .mobile_only{
+      display: none;
+    }
+
+    #options *{
+      height: 100%;
+    }
+
+    .outline{
+      -webkit-filter: drop-shadow(2px 0px 0 white)
+                      drop-shadow(0px 2px 0 white)
+                      drop-shadow(-2px -0px 0 white)
+                      drop-shadow(-0px -2px 0 white);
+
+      filter: drop-shadow(2px 0px 0 white)
+              drop-shadow(0px 2px 0 white)
+              drop-shadow(-2px -0px 0 white)
+              drop-shadow(-0px -2px 0 white);
+
+      width: 5vh;
+    }
+
+    @media (orientation: portrait) {
+      .outline{
+        width: 5vw;
+      }
+
+      canvas{ 
+        width: 90vw;
+        height: 90vw;
+      }
+      #options{
+        width: 90vw;
+        height: 5vw;
+      }
+      .mobile_only{
+        display: inline;
+      }
+
+    }
+
+    
+    
+    
+    #canvas_container{
+      
+      position: absolute;
+      margin: 0;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+
+    #title_screen{
+      width: 100%;
+      position: absolute;
+      text-align: center;
+      margin: 0;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .title{
+      font-size: 9vh;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .white{
+      color: white;
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+
+    .black{
+      color: black;
+      text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    }
+
+    button{
+      padding: 1vh;
+      font-size: 3vh;
+    }
+
+    #end_screen{
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: black;
+      color: white;
+      text-align: center;
+    }
+
+    #msg{
+      margin: 0;
+    }
+
+    </style>
+  </head>
+  <body>
+
+    <audio id="soundTrack" src="music.mp3" autoplay loop ></audio>
+
+    <div id="canvas_container">
+      <canvas id="canvas"></canvas>
+      <div id="options">
+        <img class="outline" onclick="undo()" src="back.png" alt="">
+        <div class="slidecontainer">
+          <img class="outline" src="sound.png" alt="">
+          <input type="range" min="0" max="100" value="50" class="slider" id="myRange" onchange="document.getElementById('soundTrack').volume = this.value/100">
+        </div>
+        <img class="outline" onclick="document.getElementById('soundTrack').pause(); document.getElementById('soundTrack').currentTime = 0; document.getElementById('title_screen').style.display='block'; document.getElementById('canvas_container').style.display = 'none';" src="exit.png" alt="">
+        
+      </div>
+    </div>
+
+    <div id="title_screen">
+      <span class="title">
+        <span class="black">O</span>
+        <span class="white">t</span>
+        <span class="black">h</span>
+        <span class="white">e</span>
+        <span class="black">l</span>
+        <span class="white">l</span>  
+        <span class="black">o</span>  
+      </span>
+      <br>
+      <button onclick="init()">Play</button>
+      <br class="mobile_only">
+      <br class="mobile_only">
+    </div>
+
+    <div id="end_screen">
+      <h1 class="title" id="msg"></h1>
+      <button id="again" onclick="document.getElementById('end_screen').style.display = 'none'; init();">Play Again</button>
+      <br class="mobile_only">
+      <br class="mobile_only">
+      <button id="back" onclick="document.getElementById('soundTrack').pause(); document.getElementById('soundTrack').currentTime = 0; document.getElementById('end_screen').style.display = 'none'; document.getElementById('title_screen').style.display='block'; document.getElementById('canvas_container').style.display = 'none';">Back to Home</button>
+    </div>
+
+    <script type="text/javascript" src="ai.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
