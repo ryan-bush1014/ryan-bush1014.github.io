@@ -11,7 +11,7 @@ let obsArray = [{"x":2,"y":0},{"x":1,"y":1},{"x":1,"y":2},{"x":0,"y":3},{"x":0,"
 let openList = [];
 let closedList = [];
 
-let heuristic = 2;
+let heuristic = 1;
 
 let start = {x: 0, y: 0};
 let goal = {x: 10, y: 4};
