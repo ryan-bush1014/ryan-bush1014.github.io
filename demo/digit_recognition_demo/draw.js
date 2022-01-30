@@ -43,10 +43,18 @@ let anim_id;
 
 
             let out = nn.eval(digit)[3];
+            let max = 0;
+            let max_index = -1;
             for (let i = 0; i < 10; ++i) {
                 let meter = document.getElementById("conf_" + i);
+                meter.classList.remove("bestAnswer");
+                if (out[i] > max) {
+                    max = out[i];
+                    max_index = i;
+                }
                 meter.style.setProperty('--confidence', ((1 - out[i]) * 100) + '%');
             }
+            document.getElementById("conf_" + max_index).classList.add("bestAnswer");
         }
 
         window.onload = draw_and_predict;

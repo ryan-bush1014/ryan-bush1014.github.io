@@ -57,6 +57,7 @@
             color: white;
             position: relative;
             border: 0.1em white solid;
+            transition: border ease 1000ms;
             --confidence: 0%;
         }
 
@@ -66,7 +67,9 @@
             inset: 0;
             z-index: -1;
             position: absolute;
-            background: linear-gradient(transparent, transparent var(--confidence), var(--col) var(--confidence), var(--col));
+            transition: clip-path ease 1000ms;
+            clip-path: inset(var(--confidence) 0 0 0);
+            background: var(--col);
             border-radius: 50%;
         }
 
@@ -82,6 +85,10 @@
 
         #mnistCanvas {
             width: 15em;
+        }
+
+        .bestAnswer {
+            border: 0.1em orange solid;
         }
     </style>
 </head>
