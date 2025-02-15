@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="cache-control" content="no-cache" />
+  <title>Fakespeare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="card">
+    <h1>Fakespeare</h1>
+    <h2>"Sometimes makes sense!"</h2>
+    <textarea placeholder="Speak on, but be not over-tedious." spellcheck="false" class="interact">First Citizen:
+Before we proceed any further, hear me speak.
+
+All:
+Speak, speak.
+
+First Citizen:
+You are all resolved rather to die than to famish?
+
+All:
+Resolved. resolved.
+
+First Citizen:
+First, you know Caius Marcius is chief enemy to the people.
+
+All:
+We know't, we know't.</textarea>
+    <div class="options">
+      <button class="generateButton">🔮 Generate</button>
+      <div class="temp">
+        <span class="tempInd">Temperature: 0.4</span>
+        <br>
+        <input class="tempSlider" value="0.4" min="0" max="1" step="0.1" type="range">
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.16.3/dist/ort.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
